@@ -19,6 +19,6 @@
     list-style-type: none;
 }
 
-.flex.direction-column {
+.flex.column {
     flex-direction: column;
 }
