@@ -1,0 +1,57 @@
+@import 'basic/halpers.css';
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bgBodyClr: #22252c;
+    --bgGalleryClr: #383b42;
+    --bgHeaderClr: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%); 
+}
+
+body{
+    margin: 0;
+    background-color: var(--bgBodyClr);
+}
+
+.main-header{
+    background-image: var(--bgHeaderClr);
+    border-radius: 2.3125rem;
+}
+
+.logo-img{
+    width: 100px;
+}
+
+
+.header-layout{
+   max-width: 58.125rem;
+   margin: auto;
+}
+
+.main-header .header-btn a{
+    height: 4.5625rem;
+    width: 8.125rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+.gallery{
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 1250px;
+    margin: auto;
+    background: var(--bgGalleryClr);
+    border-radius: 10px;
+}
+
+.img-gallery{
+width: 200px;
+height: 173px;
+border-radius: 14px;
+    box-shadow: 0px -1px 20px 6px #000000;
+}
