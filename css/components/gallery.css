@@ -1,0 +1,18 @@
+.image-gallery {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 1240px;
+    margin: auto;
+    background: var(--bgGalleryClr);
+    border-radius: 10px;
+    margin-top: 4rem;
+}
+
+.img-gallery {
+    width: 200px;
+    height: 173px;
+    border-radius: 14px;
+    box-shadow: 0px -1px 20px 6px #000000;
+    cursor: pointer;
+}

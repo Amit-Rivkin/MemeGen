@@ -1,85 +1,23 @@
+/* Setup */
+@import 'setup/vars.css';
+
+/* Base */
+@import 'basic/base.css';
 @import 'basic/halpers.css';
 
-* {
-    box-sizing: border-box;
-}
+/* Components */
+@import 'components/main-header.css';
+@import 'components/gallery.css';
+@import 'components/editor.css';
 
-:root {
-    --bgBodyClr: #22252c;
-    --bgGalleryClr: #383b42;
-    --bgHeaderClr: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
-}
-
-body {
-    margin: 0;
-    background-color: var(--bgBodyClr);
-}
-
-.main-header {
-    background-image: var(--bgHeaderClr);
-    border-radius: 2.3125rem;
-}
-
-.logo-img {
-    width: 100px;
-}
+/* Media Queries */
+@import 'mq/mq.css';
 
 
-.header-layout {
-    max-width: 58.125rem;
-    margin: auto;
-}
 
-.main-header .header-btn a {
-    height: 4.5625rem;
-    width: 8.125rem;
 
-}
 
-a {
-    text-decoration: none;
-}
 
-.my-canvas {
-    margin-inline-start: 5.625rem;
-}
 
-.desgin-tools {
-    background-color: #33be6d;
-    margin-inline-end: 5.625rem;
-    width: 31.25rem;
-    
-}
 
-.gallery {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    max-width: 1240px;
-    margin: auto;
-    background: var(--bgGalleryClr);
-    border-radius: 10px;
-    margin-top: 4rem;
-}
 
-.img-gallery {
-    width: 200px;
-    height: 173px;
-    border-radius: 14px;
-    box-shadow: 0px -1px 20px 6px #000000;
-    cursor: pointer;
-}
-
-@media (max-width: 1240px) {
-    .gallery {
-        max-width: 750px;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media (max-width:750px) {
-    .gallery {
-        max-width: 500px;
-        grid-template-columns: 1fr 1fr;
-    }
-}

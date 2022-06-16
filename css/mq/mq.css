@@ -1,0 +1,23 @@
+@media (max-width: 1240px) {
+    .gallery {
+        max-width: 750px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width:750px) {
+    .gallery {
+        max-width: 500px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .editor{
+        flex-direction: column;
+       
+    }
+    .desgin-tools{
+        height: 30rem;
+        margin: auto;
+    }
+}
+
+

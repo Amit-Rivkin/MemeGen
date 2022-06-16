@@ -1,0 +1,190 @@
+.txt-div {
+    background-color: #19a59f;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "increase decrease align-left align-middle align-right"
+        "select select select stroke-color paint";
+    justify-items: center;
+    align-content: center;
+    height: 9.375rem;
+}
+
+.increase {
+    grid-area: increase;
+}
+
+.decrease {
+    grid-area: decrease;
+}
+
+.align-left {
+    grid-area: align-left;
+}
+
+.align-right {
+    grid-area: align-right;
+}
+
+.align-middle {
+    grid-area: align-middle;
+}
+
+.select-font {
+    grid-area: select;
+}
+
+.stroke-color-container {
+    grid-area: stroke-color;
+}
+
+.txt-color-container {
+    grid-area: paint;
+}
+
+.txt-div button {
+    margin: auto;
+    width: 3.125rem;
+    height: 3.125rem;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #22252c;
+    background-color: #ffffff;
+    border: transparent;
+}
+
+.txt-div .select-font {
+    width: 13.5rem;
+    height: 3.125rem;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #22252c;
+    background-color: #ffffff;
+    border: transparent;
+}
+
+.download{
+width: 13.3125rem;
+height: 3.125rem;
+box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #ffffff;
+border-radius: 15px;
+background-color: #8f44bb;
+border: transparent;
+}
+
+.media-div a{
+    color: #ffffff;
+}
+
+.share{
+width: 13.3125rem;
+height: 3.125rem;
+box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #ffffff;
+border-radius: 15px;
+background-color: #1e7cd3;
+border: transparent;
+color: #ffffff;;
+margin-inline-end: 1rem;
+}
+
+.switch-line {
+    width: 3.4375rem;
+    height: 3.1rem;
+    box-shadow: 1px 5px 0 #048b97, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
+    border: transparent;
+    margin-inline-end: 2rem;
+}
+
+.delete-line {
+    width: 3.4375rem;
+    height: 3.1rem;
+    box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+    border: transparent;
+    margin-inline-start: 2rem;
+}
+
+.add-line {
+    width: 3.4375rem;
+    height: 3.1rem;
+    box-shadow: 1px 5px 0 #015d33, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    background-image: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
+    border: transparent;
+}
+
+input.set-color,
+input.color-stroke {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.stroke-color-container,
+.txt-color-container {
+    position: relative;
+    display: inline-block;
+}
+
+.stroke-color-btn {
+    text-decoration: underline;
+}
+
+.txt-input {
+    box-shadow: 1px 5px 0 #bbc4d1, inset 0 5px 0 #ffffff;
+    border-radius: 1.75rem;
+    width: 100%;
+    height: 4.25rem;
+}
+
+.my-canvas {
+    margin: 1.5rem auto;
+    border-radius: 1.875rem;
+}
+
+.desgin-tools {
+    margin: 1.5rem auto;
+    background-color: var(--bgGalleryClr);
+    margin-inline-end: 5.625rem;
+    width: 31.25rem;
+    border-radius: 1.875rem;
+    justify-content: space-around;
+    padding-inline-start: 2.5rem;
+    padding-inline-end: 2.5rem;
+}
+
+.line-up{
+    width: 3.4375rem;
+    height: 3.1rem;
+    box-shadow: 1px 5px 0 #987200, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    background-image:linear-gradient(-38deg, #ffaf38 0%, #ffae36 100%);
+    border: transparent;
+}
+
+.line-down{
+    width: 3.4375rem;
+    height: 3.1rem;
+    box-shadow: 1px 5px 0 #9ba00d, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    color: #ebeef3;
+    background-image: linear-gradient(-38deg, #ebe442 0%, #e6ed1b 100%);
+    border: transparent;
+    margin-inline-start: 2rem;
+    margin-inline-end: 2rem;
+}
+
+.editor-layout{
+    max-width: 1500px;
+}

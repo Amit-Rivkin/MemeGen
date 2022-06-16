@@ -1,0 +1,40 @@
+.main-header {
+    background-image: var(--bgHeaderClr);
+    border-radius: 2.3125rem;
+    /* height: 4.5625rem; */
+}
+
+.logo-img {
+    width: 100px;
+
+}
+
+.header-layout {
+    max-width: 58.125rem;
+    margin: 0 auto;
+}
+
+.header-gallery{
+    color: #ffffff;
+    height: 4.5625rem;
+    width: 8.125rem;
+
+}
+.header-about{
+    color: #ffffff;
+    height: 4.5625rem;
+    width: 8.125rem;
+}
+
+.header-gallery:hover {
+    color: #21ac91;
+    background-color: #fefefe;
+    border-radius: 20px;
+}
+
+.header-about:hover {
+    color: #21ac91;
+    background-color: #fefefe;
+    border-radius: 20px;
+}
+
