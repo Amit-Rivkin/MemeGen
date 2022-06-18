@@ -2,17 +2,18 @@
 
 function init() {
     renderGallery()
+    
 }
 
 function renderGallery() {
-    var elGallery = document.querySelector('.image-gallery')
+
+    var elGallery = document.querySelector('.meme-area')
     var imges = getImges()
-    var strHtml = ''
+    var strHtml =''
     for (var i = 0; i < imges.length; i++) {
         var img = imges[i]
-        strHtml += `<div class="meme-img"> <img src="${img.url}" class="img-gallery" onclick="onImgSelect(this.src)"></div>`
+        strHtml += ` <img src="${img.url}" class="img-gallery" onclick="onImgSelect(this.src)"></div>`
     }
-    // `<img src="../img/1.jpg" onclick="onImgSelect(this.src)"><img src="../img/2.jpg" onclick= "onImgSelect(this.src)"> `
     elGallery.innerHTML = strHtml
 }
 
@@ -26,8 +27,14 @@ function onImgSelect(imgSrc) {
     renderMeme()
 }
 
-// function onSetFilterByTxt(filterByTxt) {
-//     setFilterByTxt(filterByTxt)
-//     renderGallery()
-// }
+function onSetFilterByTxt(txt) {
+    setFilterByTxt(txt)
+    renderGallery()
+}
+
+function toggleHamburger() {
+    document.body.classList.toggle('menu-open')
+    const elBtn = document.querySelector('.hamburger-btn')
+    elBtn.innerText = elBtn.innerText === '☰' ? '✖' : '☰'
+  }
 

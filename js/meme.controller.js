@@ -42,7 +42,8 @@ function renderCanvas() {
    </div>
     <div class="emojis"></div>
     <div class="media-div flex space-between">
-    <button class="share" onclick="uploadImg()">Share</button>
+    <button class="share" onclick="onUploadImg()">Share</button>
+    <button class="share" onclick="onSaveImg()">Save</button>
      <button class="download"><a href="#"  onclick="onDownloadCanvas(this)" download="file-name">Download</a>
     </div>`
     elEditor.innerHTML = strHtml
@@ -52,13 +53,13 @@ function renderCanvas() {
     onSetCtx(ctx)
 }
 
+function onSaveImg(){
+    _saveMemeToStorage()
+}
 
-// function homePage(){
-//     const elGallery = document.querySelector('.gallery')
-//     elGallery.style.display = 'block'
-//     const elEditor = document.querySelector('.editor')
-//     elEditor.style.display = 'none'
-// }
+function onUploadImg(){
+    uploadImg()
+}
 
 function onChangeInput() {
     const elInput = document.querySelector('.txt-input')
@@ -146,84 +147,3 @@ function onDeletLine() {
 function onDownloadCanvas(elLink) {
     downloadCanvas(elLink)
 }
-
-// function addListeners() {
-//     addMouseListeners()
-//     addTouchListeners()
-//     //Listen for resize ev 
-//     window.addEventListener('resize', () => {
-//         resizeCanvas()
-//         renderCanvas()
-//     })
-// }
-
-// function addMouseListeners() {
-//     gCanvas.addEventListener('mousemove', onMove)
-//     gCanvas.addEventListener('mousedown', onDown)
-//     gCanvas.addEventListener('mouseup', onUp)
-// }
-
-// function addTouchListeners() {
-//     gCanvas.addEventListener('touchmove', onMove)
-//     gCanvas.addEventListener('touchstart', onDown)
-//     gCanvas.addEventListener('touchend', onUp)
-// }
-
-// function onDown(ev) {
-//     //Get the ev pos from mouse or touch
-//     const pos = getEvPos(ev)
-//     if (!isTxtClicked(pos)) return
-//     setTxtDrag(true)
-//     //Save the pos we start from 
-//     gStartPos = pos
-//     document.body.style.cursor = 'grabbing'
-
-// }
-
-// function onMove(ev) {
-//     const circle = getgMemeLine();
-//     if (circle.isDrag) {
-//         const pos = getEvPos(ev)
-//         //Calc the delta , the diff we moved
-//         const dx = pos.x - gStartPos.x
-//         const dy = pos.y - gStartPos.y
-//         moveTxt(dx, dy)
-//         //Save the last pos , we remember where we`ve been and move accordingly
-//         gStartPos = pos
-//         //The canvas is render again after every move
-//         renderCanvas()
-//     }
-// }
-
-// function onUp() {
-//     setTxtDrag(false)
-//     document.body.style.cursor = 'grab'
-// }
-
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container')
-//     gCanvas.width = elContainer.offsetWidth
-//     gCanvas.height = elContainer.offsetHeight
-// }
-
-// function getEvPos(ev) {
-
-//     //Gets the offset pos , the default pos
-//     var pos = {
-//         x: ev.offsetX,
-//         y: ev.offsetY
-//     }
-//     // Check if its a touch ev
-//     if (gTouchEvs.includes(ev.type)) {
-//         //soo we will not trigger the mouse ev
-//         ev.preventDefault()
-//         //Gets the first touch point
-//         ev = ev.changedTouches[0]
-//         //Calc the right pos according to the touch screen
-//         pos = {
-//             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-//             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
-//         }
-//     }
-//     return pos
-// }

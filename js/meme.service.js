@@ -3,26 +3,25 @@
 var gCanvas
 var gCtx
 
-
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['aba', 'cat'] },
-{ id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
-{ id: 3, url: 'img/3.jpg', keywords: ['funny', 'cat'] },
+var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['aba', 'minister'] },
+{ id: 2, url: 'img/2.jpg', keywords: ['funny', 'dog'] },
+{ id: 3, url: 'img/3.jpg', keywords: ['funny', 'baby'] },
 { id: 4, url: 'img/4.jpg', keywords: ['funny', 'cat'] },
-{ id: 5, url: 'img/5.jpg', keywords: ['funny', 'cat'] },
-{ id: 6, url: 'img/6.jpg', keywords: ['funny', 'cat'] },
-{ id: 7, url: 'img/7.jpg', keywords: ['funny', 'cat'] },
-{ id: 8, url: 'img/8.jpg', keywords: ['funny', 'cat'] },
-{ id: 9, url: 'img/9.jpg', keywords: ['funny', 'cat'] },
-{ id: 10, url: 'img/10.jpg', keywords: ['funny', 'cat'] },
-{ id: 11, url: 'img/11.jpg', keywords: ['funny', 'cat'] },
-{ id: 12, url: 'img/12.jpg', keywords: ['funny', 'cat'] },
-{ id: 13, url: 'img/13.jpg', keywords: ['funny', 'cat'] },
-{ id: 14, url: 'img/14.jpg', keywords: ['funny', 'cat'] },
-{ id: 15, url: 'img/15.jpg', keywords: ['funny', 'cat'] },
-{ id: 16, url: 'img/16.jpg', keywords: ['funny', 'cat'] },
-{ id: 17, url: 'img/17.jpg', keywords: ['funny', 'cat'] },
-{ id: 18, url: 'img/18.jpg', keywords: ['funny', 'cat'] },
+{ id: 5, url: 'img/5.jpg', keywords: ['funny', 'baby'] },
+{ id: 6, url: 'img/6.jpg', keywords: ['funny', 'actor'] },
+{ id: 7, url: 'img/7.jpg', keywords: ['funny', 'baby'] },
+{ id: 8, url: 'img/8.jpg', keywords: ['funny', 'actor'] },
+{ id: 9, url: 'img/9.jpg', keywords: ['funny', 'baby'] },
+{ id: 10, url: 'img/10.jpg', keywords: ['funny', 'minister'] },
+{ id: 11, url: 'img/11.jpg', keywords: ['funny', 'sport'] },
+{ id: 12, url: 'img/12.jpg', keywords: ['funny', 'actor'] },
+{ id: 13, url: 'img/13.jpg', keywords: ['funny', 'actor'] },
+{ id: 14, url: 'img/14.jpg', keywords: ['funny', 'actor'] },
+{ id: 15, url: 'img/15.jpg', keywords: ['funny', 'actor'] },
+{ id: 16, url: 'img/16.jpg', keywords: ['funny', 'actor'] },
+{ id: 17, url: 'img/17.jpg', keywords: ['funny', 'minister'] },
+{ id: 18, url: 'img/18.jpg', keywords: ['funny', 'toy'] },
 ]
 var gMeme = {
     selectedImgId: 1,
@@ -63,27 +62,6 @@ function drawRectOnCurrLine() {
     drawRect(currLineX - 5, currLineY - 35, currLineMeusre.width + 10, 40)
 }
 
-// function setTxtDrag(isDrag) {
-//     gMeme.lines.isDrag = isDrag
-// }
-
-// function getgMemeLine() {
-//     return gMeme.lines
-// }
-
-// function moveTxt(dx, dy) {
-//     gMeme.lines[gMeme.selectedLineIdx].x += dx
-//     gMeme.lines[gMeme.selectedLineIdx].y += dy
-// }
-
-// function isTxtClicked(clickedPos) {
-//     const currX = gMeme.lines[gMeme.selectedLineIdx].x
-//     const currY = gMeme.lines[gMeme.selectedLineIdx].y
-//     // Calc the distance between two dots
-//     const distance = Math.sqrt((currX - clickedPos.x) ** 2 + (currY - clickedPos.y) ** 2)
-//     //If its smaller then the radius of the circle we are inside
-//     return distance <= getgMemeLine().size
-// }
 
 function getCurrTxt() {
     if (!gMeme.lines.length) return ''
@@ -126,9 +104,16 @@ function deletLine() {
 }
 
 function getImges() {
-    return gImgs
+    return gImgs.filter(img => {
+             return   img.keywords.find(txt => {
+                    if(txt.includes(getFilterByTxt())){
+                        return true
+                    }
+                })
+                    {
 }
-
+    })
+}
 function switchLine() {
     if (!gMeme.lines.length) return
     (gMeme.selectedLineIdx + 2 > gMeme.lines.length) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx += 1
@@ -237,7 +222,6 @@ function drawRect(x, y, width, height) {
 function drawText(line) {
     gCtx.lineWidth = 2
     gCtx.strokeStyle = line.stroke
-    // gCtx.textAlign = line.align
     gCtx.fillStyle = line.color
     gCtx.font = line.size + 'px' + line.font
     gCtx.fillText(line.txt, line.x, line.y)

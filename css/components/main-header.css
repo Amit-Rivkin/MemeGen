@@ -1,7 +1,7 @@
 .main-header {
     background-image: var(--bgHeaderClr);
     border-radius: 2.3125rem;
-    /* height: 4.5625rem; */
+    height: 4.5625rem;
 }
 
 .logo-img {
@@ -11,7 +11,7 @@
 
 .header-layout {
     max-width: 58.125rem;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .header-gallery{
@@ -25,7 +25,17 @@
     height: 4.5625rem;
     width: 8.125rem;
 }
+.header-Memes{
+    color: #ffffff;
+    height: 4.5625rem;
+    width: 8.125rem;
+}
 
+.header-Memes:hover {
+    color: #21ac91;
+    background-color: #fefefe;
+    border-radius: 20px;
+}
 .header-gallery:hover {
     color: #21ac91;
     background-color: #fefefe;
@@ -36,5 +46,9 @@
     color: #21ac91;
     background-color: #fefefe;
     border-radius: 20px;
+}
+
+.main-header .hamburger-btn {
+    display: none;
 }
 

@@ -1,23 +1,122 @@
 @media (max-width: 1240px) {
     .gallery {
         max-width: 750px;
+    }
+    .meme-area {
+        max-width: 500px;
         grid-template-columns: 1fr 1fr 1fr;
     }
+    .meme-search{
+        width: 20rem;
+}
 }
 
 @media (max-width:750px) {
     .gallery {
-        max-width: 500px;
+        max-width: 450px;
+    }
+    .meme-search{
+        margin: 1rem 0 0 1rem;
+        width: 15rem;
+}
+    .meme-area {
+        max-width: 300px;
         grid-template-columns: 1fr 1fr;
     }
     .editor{
         flex-direction: column;
-       
+        
     }
     .desgin-tools{
         height: 30rem;
         margin: auto;
     }
+
+    .editor-layout{
+        max-width: 450px;
+    }
 }
 
+@media (max-width:500px) {
+    .gallery {
+        max-width: 100%;
+        margin-inline-start: 0.5rem;
+        margin-inline-end: 0.5rem;
+    }
+    .header-btn{
+            flex-direction: column;
+            position: fixed;
+            right: 0;
+            top: 50px;
+            height: 100vh;
+            width: 160px;
+            background-color: var(--clr2);
+            transform: translateX(100%);
+            transition: transform 0.6s, box-shadow 0.6s;
+    
+    }
+    
+    .meme-area {
+        max-width: 200px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .img-gallery {
+        width: 165px;
+}
+.desgin-tools{
+    width: 350px;
+}
+.my-canvas{
+    width: 350px;
+}
+.header-gallery{
+    width: 4.125rem;
+
+}
+.header-about{
+    width: 4.125rem;
+}
+.header-Memes{
+    width: 8.125rem;
+}
+
+.txt-div {
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+grid-template-areas:
+    "increase . decrease"
+    "align-left align-middle align-right"
+    "select stroke-color paint";
+}
+.txt-div .select-font {
+    width: 6rem;
+    height: 3.125rem;
+}
+
+.main-header .hamburger-btn {
+    display: inline;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: var(--clr2);
+    color: white;
+    font-size: 1.6em;
+
+    transition: color 0.3s;
+  }
+
+  .main-header .hamburger-btn:hover {
+    color: var(--clr1);
+    cursor: pointer;
+  }
+  .header-layout {
+    max-width: 23.125rem;
+    margin: auto;
+  }
+  body.menu-open .header-btn {
+    background-color: var(--bgGalleryClr);
+    box-shadow: -6px 0px 17px rgb(0 0 0 / 19%);
+    transform: translateX(0);
+  }
+}
 

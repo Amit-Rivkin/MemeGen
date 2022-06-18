@@ -1,18 +1,39 @@
-.image-gallery {
+.meme-area {
     display: grid;
     gap: 30px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    max-width: 1000px;
+    margin: 3rem auto;
+    justify-content: center;
+}
+
+.gallery{
     max-width: 1240px;
-    margin: auto;
     background: var(--bgGalleryClr);
     border-radius: 10px;
-    margin-top: 4rem;
+    margin: 3rem auto;
 }
 
 .img-gallery {
     width: 200px;
     height: 173px;
     border-radius: 14px;
-    box-shadow: 0px -1px 20px 6px #000000;
+    
     cursor: pointer;
 }
+
+.img-gallery:hover{
+    box-shadow: 0px -1px 20px 6px #000000;
+}
+
+.meme-search{
+    margin-top: 1rem;
+    margin-inline-start: 3rem;
+    width: 40rem;
+    border-radius: 10px;
+    height: 3rem;
+    background-color: var(--bgBodyClr);
+    border: 0.5px solid white;
+    color: white;
+}
+
