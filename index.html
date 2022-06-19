@@ -13,8 +13,8 @@
 
 <body onload="init()">
     <header class="main-header ">
-        <div class="header-layout flex align-center space-between ">
-            <div class="main-logo align-center justify-cente"> <img class="logo-img" src="logo/LOGO.png" alt="" ></div>
+        <div class="main-layout flex align-center space-between ">
+            <div class="main-logo align-center justify-cente"> <img class="logo-img" src="logo/LOGO.png" alt=""></div>
             <div class="header-btn flex align-center justify-center">
                 <a href="index.html" class="header-gallery flex justify-center align-center">Gallery</a>
                 <a href="#" class="header-about flex justify-center align-center">About</a>
@@ -24,16 +24,16 @@
     </header>
     <section class="gallery">
         <div class="search-div">
-        <input type="text" class="meme-search" name="filter-txt" oninput="onSetFilterByTxt(this.value)" placeholder="Search your Meme..."  />
-    </div>
+            <input type="text" class="meme-search" name="filter-txt" oninput="onSetFilterByTxt(this.value)"
+                placeholder="Search your Meme..." />
+        </div>
         <div class="meme-area"></div>
     </section>
     <section class="editor flex space-between editor-layout">
     </section>
     <p class="user-msg"></p>
-        <div class="share-container"></div>
-
-        <script src="js/storage.service.js"></script>
+    <div class="share-container"></div>
+    <footer class="my-footer">&copy Coding Academy 2022 | Amit Rivkin </footer>
     <script src="js/gallery.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.service.js"></script>

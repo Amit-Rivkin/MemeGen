@@ -36,7 +36,7 @@ var gMeme = {
             color: 'white',
             stroke: 'black',
             x: 20,
-            y: 40,
+            y: 60,
             isDrag: false
         },
 
@@ -55,13 +55,52 @@ var gMeme = {
     ]
 }
 
-function drawRectOnCurrLine() {
-    var currLineX = gMeme.lines[gMeme.selectedLineIdx].x
-    var currLineY = gMeme.lines[gMeme.selectedLineIdx].y
-    var currLineMeusre = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-    drawRect(currLineX - 5, currLineY - 35, currLineMeusre.width + 10, 40)
+function getCanvas(){
+    return gCanvas
 }
 
+function isLineClicked(clickedPos) {
+    var currLineIdx
+    gMeme.lines.forEach((line, clickedLine) => {
+        var currTxtwidth = gCtx.measureText(line.txt).width
+        if (clickedPos.x >= line.x && clickedPos.x <= currTxtwidth + line.x && clickedPos.y <= line.y && clickedPos.y >= line.y - line.size) {
+            currLineIdx = clickedLine
+        }
+    })
+    return currLineIdx
+}
+
+function getCurrLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function setLineByClick(lineIdx) {
+    gMeme.selectedLineIdx = lineIdx
+}
+
+function setLineDrag(isDrag) {
+    const currLine = getCurrLine()
+    currLine.isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    const currLine = getCurrLine()
+    currLine.x += dx
+    currLine.y += dy
+}
+
+function drawRectOnCurrLine() {
+    const currLine = getCurrLine()
+    var currLineMeusre = gCtx.measureText(currLine.txt)
+    drawRect(currLine.x - 5, currLine.y - currLine.size, currLineMeusre.width + 10, currLine.size + 10)
+}
+
+
+
+function _setMemeProprty(key, value) {
+    const currLine = getCurrLine()
+    currLine[key] = value
+}
 
 function getCurrTxt() {
     if (!gMeme.lines.length) return ''
@@ -88,14 +127,14 @@ function addLine() {
 }
 
 function lineUp() {
-    if (gMeme.lines[gMeme.selectedLineIdx].y < gMeme.lines[gMeme.selectedLineIdx].size) return
-    gMeme.lines[gMeme.selectedLineIdx].y -= 5
-    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
+    const currLine = getCurrLine()
+    if (currLine.y < currLine.size) return
+    currLine.y -= 5
 }
 function lineDown() {
-    if (gMeme.lines[gMeme.selectedLineIdx].y > gCanvas.height - 10) return
-    gMeme.lines[gMeme.selectedLineIdx].y += 5
-    console.log(gMeme.lines[gMeme.selectedLineIdx].y);
+    const currLine = getCurrLine()
+    if (currLine.y > gCanvas.height - 10) return
+    currLine.y += 5
 }
 
 function deletLine() {
@@ -105,13 +144,13 @@ function deletLine() {
 
 function getImges() {
     return gImgs.filter(img => {
-             return   img.keywords.find(txt => {
-                    if(txt.includes(getFilterByTxt())){
-                        return true
-                    }
-                })
-                    {
-}
+        return img.keywords.find(txt => {
+            if (txt.includes(getFilterByTxt())) {
+                return true
+            }
+        })
+        {
+        }
     })
 }
 function switchLine() {
@@ -122,60 +161,67 @@ function switchLine() {
 
 function setColorStroke(value) {
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].stroke = value
+    _setMemeProprty('stroke', value)
 }
 
 function changefont(value) {
-    gMeme.lines[gMeme.selectedLineIdx].font = value
+    if (!gMeme.lines.length) return
+    _setMemeProprty('font', value)
 }
 
 function setColorTxt(value) {
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].color = value
+    _setMemeProprty('color', value)
 
 }
 
 function moveTxtMiddle() {
+    const currLine = getCurrLine()
     if (!gMeme.lines.length) return
-    var txtWidth = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+    var txtWidth = gCtx.measureText(currLine.txt)
     var middle = gCanvas.width / 2 - txtWidth.width / 2
-    gMeme.lines[gMeme.selectedLineIdx].x = middle
-    gMeme.lines[gMeme.selectedLineIdx].align = 'center'
+    currLine.x = middle
+    currLine.align = 'center'
 }
 
 function moveTxtLeft() {
+    const currLine = getCurrLine()
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].x = 10
-    gMeme.lines[gMeme.selectedLineIdx].align = 'left'
+    currLine.x = 10
+    currLine.align = 'left'
 }
 
 function moveTxtRight() {
+    const currLine = getCurrLine()
     if (!gMeme.lines.length) return
-    var txtWidth = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+    var txtWidth = gCtx.measureText(currLine.txt)
     var right = gCanvas.width - 10 - txtWidth.width
-    gMeme.lines[gMeme.selectedLineIdx].x = right
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
+    currLine.x = right
+    currLine.align = 'right'
 }
 
 function increaseFont() {
+    const currLine = getCurrLine()
+    if(currLine.size >= 50) return
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].size += 1
+    currLine.size += 1
 }
 function decreaseFont() {
+    const currLine = getCurrLine()
+    if(currLine.size <= 25) return
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].size -= 1
+    currLine.size -= 1
 }
 
 function setLine(line) {
     if (!gMeme.lines.length) return
-    gMeme.lines[gMeme.selectedLineIdx].txt = line
+    _setMemeProprty('txt', line)
+
 }
 
 function setImg(imgSrc) {
-    console.log(imgSrc);
     var img = gImgs.find(img => imgSrc === img.url)
     gMeme.selectedImgId = img.id
-    console.log(img.id);
 }
 
 
@@ -206,9 +252,12 @@ function renderImg(image) {
 }
 
 function renderTxt() {
-    gMeme.lines.forEach(line => {
+    if (!gMeme.lines.length) return
+    gMeme.lines.forEach((line, idx) => {
+        if(idx !== gMeme.selectedLineIdx)
         drawText(line)
     })
+    drawText(getCurrLine())
 }
 
 

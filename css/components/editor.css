@@ -2,6 +2,7 @@
     background-color: #19a59f;
     border-radius: 1rem;
     display: grid;
+    gap: 3px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
@@ -9,7 +10,7 @@
         "select select select stroke-color paint";
     justify-items: center;
     align-content: center;
-    height: 9.375rem;
+    height: 10.375rem
 }
 
 .increase {
@@ -55,6 +56,8 @@
     border: transparent;
 }
 
+
+
 .txt-div .select-font {
     width: 13.5rem;
     height: 3.125rem;
@@ -68,7 +71,7 @@
 .download{
 width: 13.3125rem;
 height: 3.125rem;
-box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #ffffff;
+box-shadow: 1px 6px 0 #632687, inset 0 5px 0 #b147c4;
 border-radius: 15px;
 background-color: #8f44bb;
 border: transparent;
@@ -81,7 +84,7 @@ border: transparent;
 .share{
 width: 13.3125rem;
 height: 3.125rem;
-box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #ffffff;
+box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #6c82ff;
 border-radius: 15px;
 background-color: #1e7cd3;
 border: transparent;
@@ -187,4 +190,6 @@ input.color-stroke {
 
 .editor-layout{
     max-width: 1500px;
+    margin-bottom: 4.9rem;
 }
+

@@ -1,24 +1,25 @@
 'use strict'
 
-// const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gStartPos
 
 function renderMeme() {
     var { url } = getImg()
     renderImg(url)
-    // addListeners()
+
 }
 
 function renderCanvas() {
     var elEditor = document.querySelector('.editor')
     var strHtml = `<canvas class="my-canvas" width=500 height=500 onclick="" style="border: 1px solid black"></canvas> 
     <div class="desgin-tools flex column space-around">
-    <div> <input type="text" placeholder="enter your text here" oninput="onSetLineTxt(this.value)" class="txt-input"/></div>
+    <div> <input type="text" placeholder="Enter your text here" oninput="onSetLineTxt(this.value)" class="txt-input"/></div>
     <div class="line-div flex align-center justify-center" > 
-    <button class="line-up" onclick="onLineUp()">🡡</button>
-    <button class="line-down" onclick="onLineDown()">🡣</button>
-    <button class="switch-line" onclick="onSwitchLine()">⮁</button>
-    <button class="add-line" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-    <button class="delete-line" onclick="onDeletLine()"><i class="fa-solid fa-trash-can"></i></button>
+    <button class="line-btn line-up" onclick="onLineUp()">🡡</button>
+    <button class="line-btn line-down" onclick="onLineDown()">🡣</button>
+    <button class="line-btn switch-line" onclick="onSwitchLine()">⮁</button>
+    <button class="line-btn add-line" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+    <button class="line-btn delete-line" onclick="onDeletLine()"><i class="fa-solid fa-trash-can"></i></button>
     </div>
    <div class="txt-div">
    <button class="increase" onclick="onIncreaseFont()">A+</button>
@@ -43,7 +44,6 @@ function renderCanvas() {
     <div class="emojis"></div>
     <div class="media-div flex space-between">
     <button class="share" onclick="onUploadImg()">Share</button>
-    <button class="share" onclick="onSaveImg()">Save</button>
      <button class="download"><a href="#"  onclick="onDownloadCanvas(this)" download="file-name">Download</a>
     </div>`
     elEditor.innerHTML = strHtml
@@ -51,13 +51,10 @@ function renderCanvas() {
     onSetCanvas(canvas)
     const ctx = canvas.getContext('2d')
     onSetCtx(ctx)
+    addListeners()
 }
 
-function onSaveImg(){
-    _saveMemeToStorage()
-}
-
-function onUploadImg(){
+function onUploadImg() {
     uploadImg()
 }
 
@@ -71,11 +68,11 @@ function onAddLine() {
     renderMeme()
 }
 
-function onLineUp(){
+function onLineUp() {
     lineUp()
     renderMeme()
 }
-function onLineDown(){
+function onLineDown() {
     lineDown()
     renderMeme()
 }
@@ -147,3 +144,68 @@ function onDeletLine() {
 function onDownloadCanvas(elLink) {
     downloadCanvas(elLink)
 }
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+        if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+         pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
+}
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+}
+
+function addMouseListeners() {
+    var canvas = getCanvas()
+    canvas.addEventListener('mousemove', onMove)
+    canvas.addEventListener('mousedown', onDown)
+    canvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    var canvas = getCanvas()
+    canvas.addEventListener('touchmove', onMove)
+    canvas.addEventListener('touchstart', onDown)
+    canvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    var clickedLineIdx = isLineClicked(pos)
+    if (clickedLineIdx === undefined) return
+    setLineByClick(clickedLineIdx)
+    renderMeme()
+    onChangeInput()
+    setLineDrag(true)
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+    
+}
+
+function onMove(ev) {
+    const currLine = getCurrLine()
+    if (currLine.isDrag) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        moveLine(dx, dy)
+        gStartPos = pos
+        renderMeme()
+    }
+}
+function onUp() {
+    setLineDrag(false)
+    document.body.style.cursor = 'grab'
+}
+

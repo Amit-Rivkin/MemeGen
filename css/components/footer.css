@@ -1,0 +1,9 @@
+.my-footer {
+    background-image: var(--bgHeaderClr);
+    border-radius: 2.3125rem;
+    font-size: 1.5rem;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    padding: .5rem;
+}
